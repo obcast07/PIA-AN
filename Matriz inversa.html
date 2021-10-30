@@ -1,0 +1,81 @@
+<html> 
+  <head> 
+  <title>Calculando determinantes 2x2 javascript</title> 
+  <link rel="stylesheet" href="./index.css">
+  </head> 
+  <body>
+  <script type="text/javascript" src="zepto.min.js" > </script>
+  <script type="text/javascript">
+  
+
+  //creando variables
+  var a00,a01,a02,a10,a11,a12,a20,a21,a22,total;
+  //editando funcion para calcular ls determinantes
+  function Calcular_determinante(){
+  //asignando valores
+   /* aqui muestro el orden de los nombres de la variables a las cuales les asigno los numeros 
+               !a00 a10 a20! l2a00 l2a10
+               !a01 a11 a21! l2a01 l2a11
+               !a02 a12 a22! l2a02 l2a12*/
+  a00=document.getElementById("a00").value;
+  a01=document.getElementById("a01").value;
+  a02=document.getElementById("a02").value;
+  a10=document.getElementById("a10").value;
+  a11=document.getElementById("a11").value;
+  a12=document.getElementById("a12").value;
+  a20=document.getElementById("a20").value;
+  a21=document.getElementById("a21").value;
+  a22=document.getElementById("a22").value;
+  
+
+  /*
+   si        
+           
+               !a00 a10 a20! l2a00 l2a10
+               !a01 a11 a21! l2a01 l2a11
+               !a02 a12 a22! l2a02 l2a12
+           total=a00*a11*a22 + a10*a21*aa02 +a20*aa01*aa12;
+           Total=Total+(a02*a11*a20)*-1 + (a12*a21*l2a00)*-1 + (a22*l2a01*l2a10)*-1;
+              total.setText(String.valueOf(Total));
+              add(total);
+ */
+ total=a00*a11*a22 + a10*a21*a02 +a20*a01*a12;
+ total=total+(a02*a11*a20)*-1 + (a12*a21*a00)*-1 + (a22*a01*a10)*-1;
+
+ if(total!=0){
+  var t=$("#total");
+  
+    t.html(" || "+(a11*a22-a21*a12)/total+"  ");
+    t.html(t.html()+" || "+((a01*a22-a21*a02)*-1)/total);
+    t.html(t.html()+" || "+(a01*a12-a11*a02)/total+"<br>");	
+    t.html(t.html()+" || "+((a10*a22-a20*a12)*-1)/total);
+    t.html(t.html()+" || "+((a00*a22-a20*a02))/total);
+    t.html(t.html()+" || "+((a00*a12-a10*a02)*-1)/total+"<br>");
+	t.html(t.html()+" || "+((a10*a21-a20*a11))/total);
+    t.html(t.html()+" || "+((a00*a21-a20*a01)*-1)/total);
+    t.html(t.html()+" || "+(a00*a11-a10*a01)/total);                                                              
+                              
+ 
+     }else{
+	       var t=$("#total");
+           t.html("Error el det da 0");}
+ 
+ 
+
+ 
+ 
+ }
+
+  </script>
+  
+  <br>Ingrese los valores<br>
+    <input type="text"  id ="a00">         <input type="text"  id ="a01">  <input type="text"  id ="a02">
+<br><input type="text"  id ="a10">         <input type="text"  id ="a11">  <input type="text"  id ="a12">
+<br><input type="text"  id ="a20">         <input type="text"  id ="a21">  <input type="text"  id ="a22">    
+<br><input type="button" onClick="Calcular_determinante()" value="Calcular">
+ 
+<div id="total">Total: </div> 
+
+  
+  </body> 
+</html>
